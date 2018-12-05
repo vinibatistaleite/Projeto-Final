@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 //declarar variaveis
 let animationFrameStatus;
-let jumpDuration = 1200;
+let jumpDuration = 1000;
 
 
 class Game extends React.Component {
@@ -16,20 +16,20 @@ class Game extends React.Component {
         this.state = {
             isPlaying: false,
             isJumping: false,
-            gameSpeed: 1,
+            gameSpeed: 100,
             distance: 0,
             score: 0,
             bgOffset: 0,
             floorOffset: 0,
             itemOffset: 0,
-            lifes: 400,
+            lifes: 3,
             items: {
-                item1: {bottom: 20, left: 300, touched: false},
-                item2: {bottom: 20, left: 600, touched: false},
-                item3: {bottom: 40, left: 900, touched: false},
-                item4: {bottom: 20, left: 1200, touched: false},
-                item5: {bottom: 50, left: 1500, touched: false},
-                item6: {bottom: 30, left: 1800, touched: false}
+                item1: {bottom: 20, left: 500, touched: false},
+                item2: {bottom: 20, left: 1000, touched: false},
+                item3: {bottom: 40, left: 1500, touched: false},
+                item4: {bottom: 20, left: 2000, touched: false},
+                item5: {bottom: 50, left: 2500, touched: false},
+                item6: {bottom: 30, left: 3000, touched: false}
             }
         };
 
@@ -71,7 +71,7 @@ class Game extends React.Component {
         }
 
         // Aumenta a velociade
-        this.setState({gameSpeed: (this.state.distance / 100) + 3 });
+        this.setState({gameSpeed: (this.state.distance / 25) + 9 });
 
         //se esta jogando
         if (this.state.isPlaying === true) {
@@ -89,7 +89,7 @@ class Game extends React.Component {
             // velocidade de movimento do inimigo
             this.setState({ itemOffset: this.state.itemOffset + (0.6 * gameSpeed) })
             //distancia +1
-            this.setState({ distance: this.state.distance + 1  })
+            this.setState({ distance: this.state.distance + 0.1  })
 
             Object.keys(this.state.items).forEach((item) => {
                 console.log(item + ' test')
